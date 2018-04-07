@@ -85,7 +85,10 @@ std::vector<Tile> find_path(const Tile& start, const Tile& goal);
 
 //MY FUNCTIONS & VARIABLES
 bool is_first_turn = true;
-boid run_first_turn();
+void run_first_turn();
+
+void soldier_turn();
+void missionary_turn();
 
     // ####################
     // Don't edit these!
