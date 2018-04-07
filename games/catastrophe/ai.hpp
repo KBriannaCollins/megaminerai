@@ -83,7 +83,9 @@ public:
 /// <return>A List of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal. Or an empty list if no path found.</return>
 std::vector<Tile> find_path(const Tile& start, const Tile& goal);
 
-
+//MY FUNCTIONS & VARIABLES
+bool is_first_turn = true;
+boid run_first_turn();
 
     // ####################
     // Don't edit these!

@@ -64,10 +64,66 @@ void AI::ended(bool won, const std::string& reason)
 /// <returns>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</returns>
 bool AI::run_turn()
 {
+    if (is_first_turn){
+        run_first_turn();
+        is_first_turn = false;
+    }
+
+    auto my_units = player->units;
+
+    for (auto unit : my_units){
+        if (unit->job->title == "cat overlord"){
+            //do nothing
+        } else if (unit->job->title == "soldier"){
+            soldier_turn();
+        } else if (unit->job->title == "missionary"){
+            missionary_turn();
+        }
+    }
     // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     // Put your game logic here for run_turn here
     // <<-- /Creer-Merge: runTurn -->>
     return true;
+}
+
+void AI::run_first_turn()
+{
+    auto my_units = player->units;
+    //ME: auto automatically sets the data type
+
+    int counter = 0;
+
+    for (auto unit : my_units){
+        if (unit->job->title == "cat overlord"){
+            cout << "Reached cat" << endl;
+        } else {
+            if (counter == 0){
+                if (unit->change_job("missionary")){
+                    counter++;
+                }
+            } else if (counter == 1){
+                    if (unit->change_job("soldier")){
+                        counter++;
+                    }
+                }else{
+                     if (unit->change_job("missionary")){
+                         counter++;
+                        }
+                  }
+            }
+      }
+}
+
+void soldier_turn()
+{
+
+
+}
+
+void missionary_turn()
+{
+
+
 }
 
 /// A very basic path finding algorithm (Breadth First Search) that when given a starting Tile, will return a valid path to the goal Tile.
